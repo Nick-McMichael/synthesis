@@ -59,11 +59,29 @@ let month i = match i with
     |12 -> ("December", 31)
     |_ -> failwith "Invalid Arg, # must be between 1 and 12"
 
-let toBinary _ =
-    failwith "Not implemented"
+let rec toBinary i = match i >= 0 with 
+    |false -> failwith "Invalid Arg, # below 0"
+    |true -> 
+        match i with
+        | 0 | 1 -> string i
+        | _ ->
+        let b = string (i % 2)
+        (toBinary (i / 2)) + b
 
-let bizFuzz _ =
-    failwith "Not implemented"
+let rec bizFuzz n =
+    let acc3 = 0
+    let acc5 = 0
+    let acc35 = 0
+    let count = 1
+    let rec temp n count = 
+        match (count < n) with 
+        |false -> (acc3, acc5, acc35)
+        |true -> 
+            match count  % 3 = 0 with
+                |true -> acc3 = acc3 + 1
+                |false -> temp(count + 1)
+
+
 
 let monthDay _ _ =
     failwith "Not implemented"
