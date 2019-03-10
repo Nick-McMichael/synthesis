@@ -2,6 +2,7 @@ module Synthesis.Tests
 open NUnit.Framework
 open FsUnit
 open Preamble
+open Synthesis
 
 (*
 NOTE: These tests have been written so that they will be easy for you to read.

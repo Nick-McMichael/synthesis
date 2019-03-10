@@ -36,14 +36,28 @@ let rec digits i = match i >= 0 with
     |true ->
     if i < 10 then 1 else 1 + digits (i / 10)
 
-let minmax _ =
+let minmax i = 
     failwith "Not implemented"
 
-let isLeap _ =
-    failwith "Not implemented"
+let isLeap i = match i < 1582 with
+    |true -> failwith "invalid year, must be greater than 1582"
+    |false -> i % 4 = 0 && (i % 100 <> 0 || i % 400 = 0)
+        
 
-let month _ =
-    failwith "Not implemented"
+let month i = match i with
+    |1 -> ("January", 31)
+    |2 -> ("February", 28)
+    |3 -> ("March", 31)
+    |4 -> ("April", 30)
+    |5 -> ("May", 31)
+    |6 -> ("June", 30)
+    |7 -> ("July", 31)
+    |8 -> ("August", 31)
+    |9 -> ("September", 30)
+    |10 -> ("October", 31)
+    |11 -> ("November", 30)
+    |12 -> ("December", 31)
+    |_ -> failwith "Invalid Arg, # must be between 1 and 12"
 
 let toBinary _ =
     failwith "Not implemented"
