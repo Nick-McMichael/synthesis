@@ -18,14 +18,23 @@ let max a b = match a > b with
     |true -> a
     |false -> b
 
-let ofTime _ _ _ =
-    failwith "Not implemented"
+let ofTime h m s = (h * 60 * 60) + (m * 60) + (s)
 
-let toTime _ =
-    failwith "Not implemented"
+let toTime s = match s < 0 with
+    |true -> (0,0,0)
+    |false -> 
+    let mt = s/60 
+    let seconds = s%60
+    let hours = mt/60
+    let minutes = mt%60
+    (hours, minutes, seconds)
 
-let digits _ =
-    failwith "Not implemented"
+
+
+let rec digits i = match i >= 0 with 
+    |false -> digits (i * -1)
+    |true ->
+    if i < 10 then 1 else 1 + digits (i / 10)
 
 let minmax _ =
     failwith "Not implemented"
